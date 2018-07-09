@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.org " lang="en">
+<head th:replace="base :: head-source">
+</head>
+<body>
+<nav th:replace="base :: main-navbar"></nav>
+
+<div class="container">
+
+    <div class="emptySpace"></div>
+
+    <div class="bg-light form-background">
+        <div class="row">
+
+            <div class="col-2">&nbsp;</div>
+            <div class="col-8">
+                <br/><br/>
+                <h3 class="text-center text-light"> Add a Car category</h3>
+                <form method="POST" action="/addCat" th:object="${type}">
+
+                    <div class="form-group">
+                        <input type="hidden" th:field="*{id}" class="form-control" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="categoryInput">Car Category</label>
+
+                        <input type="text" th:field="*{categorie}" class="form-control input-md" id="categoryInput" required=""/>
+                        <span th:if="${#fields.hasErrors('categorie')}" th:errors="*{categorie}"></span><br/>
+
+                    </div>
+
+                    <button type="submit" class="btn btn-warning btn-lg">Submit</button>
+                    <br/><br/>
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<!--<footer th:replace="base :: footer"></footer>-->
+<div th:replace="base :: scripts"></div>
+</body>
+</html>

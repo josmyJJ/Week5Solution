@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head th:replace="base :: head-source"></head>
+
+<body>
+<nav th:replace="base :: main-navbar"></nav>
+
+<div class="container">
+
+    <div class="emptySpace"></div>
+
+    <div class="jumbotron jumbotronback" align="center">
+        <h1>Welcome to BMBOfMC</h1>
+    </div>
+
+    <h2 class="bg-light text-black px-4 ml-3">Categories</h2>
+
+    <div class="row mt-3">
+        <div class="col-sm-6 col-md-2 ml-3" th:each="oneCat : ${categories}">
+            <a href="/" th:text="${oneCat.categorie}" class="btn btn-secondary"></a>
+        </div>
+    </div>
+    <br/><br/>
+
+
+    <h2 class="bg-light text-black px-4 ml-3">Available Cars</h2>
+
+    <div class="row mt-3">
+
+        <div class="col-sm-12 col-md-4 ml-4 card" th:each="oneMeme : ${memes}" >
+            <!--class="col-4 card"-->
+
+            <img width="200px" class="card-img-top" th:src="(${oneMeme.pictureUrl}!=null)?${oneMeme.pictureUrl}:'/img/placeholder.png'" />
+
+            <div class="card-body">
+                <h5 class="card-title" th:text="${oneMeme.manufacturer}"></h5>
+                <h6 class="card-subtitle mb-2 text-muted" th:text="${oneMeme.model}"></h6>
+                <div>
+
+
+
+                    <span class="card-text" th:text="${oneMeme.year}"></span>
+                    <span><a th:href="@{/detail/{id}(id=${oneMeme.id})}">View More</a></span>
+                </div>
+                <br/>
+
+
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<!--<div class="emptySpace"></div>-->
+<!--<footer th:replace="base :: footer"></footer>-->
+<div th:replace="base :: scripts"></div>
+
+</body>
+</html>
