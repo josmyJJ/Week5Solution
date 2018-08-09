@@ -4,14 +4,13 @@
 /*}*/
 
 body {
-    /* Margin bottom by footer height */
-    background-image: url("../img/carBack2.jpeg");
+    /*background-image: url("../img/background.jpeg");*/
+    background-color: #0b2e13;
+    /*background:linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0.0.5));*/
+    /*background-position: center center;*/
+    background-size: cover;
     margin-bottom: 60px;
     font-family: 'Quicksand', sans-serif;
-    /*background:linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0.0.5)), url("../img/carBack1.jpeg");*/
-    /*background-image: ("../img/carBack1.jpeg");*/
-    /*background:linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0.0.5));*/
-    background-size: cover;
 }
 /*.footer {*/
     /*position: absolute;*/
@@ -37,4 +36,8 @@ body {
 
 .jumbotronback{
     opacity: .92;
+}
+
+.space{
+    height: 50px;
 }

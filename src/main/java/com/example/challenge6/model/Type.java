@@ -12,16 +12,10 @@ public class Type {
 
     private String categorie;
 
-
-
-
     @OneToMany(mappedBy = "type",
             cascade = CascadeType.ALL,
             fetch = FetchType.EAGER)
     public Set<Car> car;
-
-
-
 
     public long getId() {
         return id;
