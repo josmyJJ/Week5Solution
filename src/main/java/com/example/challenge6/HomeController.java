@@ -2,10 +2,10 @@ package com.example.challenge6;
 
 import com.cloudinary.utils.ObjectUtils;
 import com.example.challenge6.config.CloudinaryConfig;
-import com.example.challenge6.model.Car;
-import com.example.challenge6.model.Type;
-import com.example.challenge6.repository.CarRepository;
-import com.example.challenge6.repository.TypeRepository;
+import com.example.challenge6.model.Instructor;
+import com.example.challenge6.model.Department;
+import com.example.challenge6.repository.InstructorRepository;
+import com.example.challenge6.repository.DepartmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,45 +14,42 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import java.io.IOException;
-import java.time.LocalDate;
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
 
 @Controller
 public class HomeController {
 
     @Autowired
-    CarRepository memeRepository;
+    InstructorRepository instructorRepository;
 
     @Autowired
-    TypeRepository typeRepository;
+    DepartmentRepository departmentRepository;
 
     @Autowired
     CloudinaryConfig cloudc;
 
     @RequestMapping("/")
     public String listActors(Model model) {
-        model.addAttribute("memes", memeRepository.findAll());
-        model.addAttribute("categories", typeRepository.findAll());
+        model.addAttribute("instructors", instructorRepository.findAll());
+        model.addAttribute("categories", departmentRepository.findAll());
         return "list";
     }
 
     @GetMapping("/add")
     public String newMeme(Model model) {
-        model.addAttribute("meme", new Car());
-        model.addAttribute("categories", typeRepository.findAll());
+        model.addAttribute("instructor", new Instructor());
+        model.addAttribute("categories", departmentRepository.findAll());
         return "form";
     }
 
     @GetMapping("/addCat")
     public String newType(Model model){
-        model.addAttribute("type", new Type());
+        model.addAttribute("type", new Department());
         return "category";
     }
 
     @PostMapping("/add")
-    public String processMeme(@Valid @ModelAttribute("meme") Car meme,
+    public String processMeme(@Valid @ModelAttribute("instructor") Instructor meme,
                               @RequestParam("file") MultipartFile file) {
 
         if (file.isEmpty()) {
@@ -63,7 +60,7 @@ public class HomeController {
             Map uploadResult = cloudc.upload(file.getBytes(), ObjectUtils.asMap("resourcetype", "auto"));
             meme.setPictureUrl(uploadResult.get("url").toString());
 
-            memeRepository.save(meme);
+            instructorRepository.save(meme);
         } catch (IOException e) {
             e.printStackTrace();
             return "redirect:/add";
@@ -72,28 +69,27 @@ public class HomeController {
     }
 
     @PostMapping("/addCat")
-    public String processCategory(@Valid @ModelAttribute("type") Type type){
-        typeRepository.save(type);
+    public String processCategory(@Valid @ModelAttribute("type") Department department){
+        departmentRepository.save(department);
         return "redirect:/";
     }
 
 
-
     @RequestMapping("/detail/{id}")
     public String showMeme(@PathVariable("id") long id, Model model) {
-        model.addAttribute("meme", memeRepository.findById(id).get());
+        model.addAttribute("instructor", instructorRepository.findById(id).get());
         return "show";
     }
 
     @RequestMapping("/update/{id}")
     public String updateMeme(@PathVariable("id") long id, Model model) {
-        model.addAttribute("meme", memeRepository.findById(id));
+        model.addAttribute("instructor", instructorRepository.findById(id));
         return "form";
     }
 
     @RequestMapping("/delete/{id}")
     public String deleteMeme(@PathVariable("id") long id) {
-        memeRepository.deleteById(id);
+        instructorRepository.deleteById(id);
         return "redirect:/";
     }
 

@@ -6,29 +6,32 @@
 <nav th:replace="base :: main-navbar"></nav>
 
 <div class="jumbotron jumbotronback" align="center">
-    <h1>Welcome to BMBOfMC</h1>
+    <h1>Welcome to MC</h1>
 </div>
 
 <div class="container">
     <div class="space"></div>
     <div class="p-2">
-        <h2 class="text-light text-center">Available Cars</h2>
+        <h2 class="text-light text-center">Instructors</h2>
     </div>
 
     <div class="row mt-3">
-        <div class="col-sm-12 col-md-4 ml-4 card" th:each="oneMeme : ${memes}">
+        <!--<div class="col-sm-12 col-md-4 ml-4 card" th:each="oneMeme : ${instructors}">-->
+        <div class="col-sm-12 col-md-4 ml-4 card"
+             th:each="oneInstructor : ${instructors}">
             <!--class="col-4 card"-->
-
             <img width="200px" class="card-img-top"
-                 th:src="(${oneMeme.pictureUrl}!=null)?${oneMeme.pictureUrl}:'/img/placeholder.png'"/>
+                 th:src="(${oneInstructor.pictureUrl}!=null)?${oneInstructor.pictureUrl}:'/img/placeholder.png'"/>
 
             <div class="card-body">
-                <h5 class="card-title" th:text="${oneMeme.manufacturer}"></h5>
+                <h5 class="card-title" th:text="${oneInstructor.name}"></h5>
                 <h6 class="card-subtitle mb-2 text-muted"
-                    th:text="${oneMeme.model}"></h6>
+                    th:text="${oneInstructor.courseId}"></h6>
+                    <!--th:text="${oneInstructor.model}"></h6>-->
                 <div>
-                    <span class="card-text" th:text="${oneMeme.year}"></span>
-                    <span><a th:href="@{/detail/{id}(id=${oneMeme.id})}">View More</a></span>
+                    <!--<span class="card-text" th:text="${oneInstructor.year}"></span>-->
+                    <span class="card-text" th:text="${oneInstructor.employeeId}"></span>
+                    <span><a th:href="@{/detail/{id}(id=${oneInstructor.id})}">View More</a></span>
                 </div>
                 <br/>
             </div>
@@ -37,11 +40,11 @@
 
     <div class="space"></div>
     <div class="p-2">
-        <h2 class="text-light text-center">Categories</h2>
+        <h2 class="text-light text-center">Departments</h2>
     </div>
     <div class="row mt-3">
-        <div class="col-sm-6 col-md-2 ml-3" th:each="oneCat : ${categories}">
-            <a href="/" th:text="${oneCat.categorie}"
+        <div class="col-sm-6 col-md-2 ml-3" th:each="oneDep : ${categories}">
+            <a href="/" th:text="${oneDep.department}"
                class="btn btn-secondary"></a>
         </div>
     </div>
@@ -49,8 +52,8 @@
 
 </div>
 
-<!--<div class="emptySpace"></div>-->
-<!--<footer th:replace="base :: footer"></footer>-->
+<div class="emptySpace"></div>
+<footer th:replace="base :: footer"></footer>
 <div th:replace="base :: scripts"></div>
 
 </body>

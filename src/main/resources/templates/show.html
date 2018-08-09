@@ -10,14 +10,16 @@
         <div class="col-3">&nbsp;</div>
         <div class="col-6">
             <div class="card">
-                <div class="card-header" th:text="${meme.manufacturer}"></div>
-                <img th:src="${meme.pictureUrl}" width="100%"/>
+                <!--<div class="card-header" th:text="${instructor.manufacturer}"></div>-->
+                <div class="card-header" th:text="${instructor.name}"></div>
+                <!--<img th:src="${instructor.pictureUrl}" width="100%"/>-->
+                <img th:src="${instructor.pictureUrl}" width="100%"/>
                 <div class="card-body">
-                    <h5 class="card-title" th:text="${meme.model}"></h5>
-                    <p class="card-text" th:text="${meme.year}"></p>
+                    <h5 class="card-title" th:text="${instructor.employeeId}"></h5>
+                    <p class="card-text" th:text="${instructor.courseId}"></p>
 
-                    <a class="btn btn-info btn-sm" th:href="@{/update/{id}(id=${meme.id})}">Update</a>
-                    <a class="btn btn-danger btn-sm" th:href="@{/delete/{id}(id=${meme.id})}">Delete</a>
+                    <a class="btn btn-info btn-sm" th:href="@{/update/{id}(id=${instructor.id})}">Update</a>
+                    <a class="btn btn-danger btn-sm" th:href="@{/delete/{id}(id=${instructor.id})}">Delete</a>
                 </div>
             </div>
         </div>

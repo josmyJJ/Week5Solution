@@ -4,47 +4,34 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>BMWofMC</title>
-
+    <title>Instructor</title>
     <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet" />
-
     <link rel="stylesheet" href="/css/bootstrap.min.css"/>
-
     <link rel="stylesheet" href="/css/style.css" />
-
 </head>
-<body>
 
+<body>
 <nav class="navbar navbar-light bg-dark" th:fragment="main-navbar">
-    <!--<nav class="navbar navbar-expand-lg navbar-dark bg-dark" th:fragment="main-navbar">-->
-    <!--<nav class="navbar navbar-light bg-light">-->
-        <!--<a class="navbar-brand" href="/">&nbsp; BMWofMC</a>-->
-            <!--<img src="#" width="30" height="30" class="d-inline-block align-top" alt="memegram"/>-->
-        <!--<span class="navbar-brand mb-0 h1">&nbsp; BMWofMC</span></a>-->
-    <a class="navbar-brand text-light" href="/">
-        BMWOfMC
-    </a>
-    <!--</nav>-->
+        <a class="text-light" href="/"> InstructorDepartment </a>
     <ul class="nav ">
         <li class="nav-item text-light">
             <a class="nav-link text-light" href="/">Home</a>
         </li>
         <li class="nav-item text-light">
-            <a class="nav-link text-light" href="/add">Add a Car</a>
+            <a class="nav-link text-light" href="/addCat">Add a Department</a>
         </li>
         <li class="nav-item text-light">
-            <a class="nav-link text-light" href="/addCat">Add a Category</a>
+            <a class="nav-link text-light" href="/add">Add an Instructor</a>
         </li>
     </ul>
 </nav>
 
-
-<!--<footer th:fragment="footer">-->
-    <!--<div class="container">-->
-        <!--<hr/>-->
-        <!--<span class="text-muted">&copy; 2018 Josemy Joseph</span>-->
-    <!--</div>-->
-<!--</footer>-->
+<footer th:fragment="footer">
+    <div class="container">
+        <hr/>
+        <span class="text-muted">&copy; 2018 Josemy Joseph</span>
+    </div>
+</footer>
 
 
 <div th:fragment="scripts">

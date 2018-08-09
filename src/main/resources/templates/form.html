@@ -13,35 +13,41 @@
             <div class="col-2">&nbsp;</div>
             <div class="col-8">
                 <br/><br/>
-                <h3 class="text-center">Add a Car</h3><br/>
-                <form method="POST" action="/add" th:object="${meme}" enctype="multipart/form-data">
+                <h3 class="text-center">Add an Instructor</h3><br/>
+
+                <form method="POST" action="/add" th:object="${instructor}" enctype="multipart/form-data">
+
                     <div class="form-group">
-                        <input type="hidden" th:field="*{id}" class="form-control" />
-                    </div>
-                    <div class="form-group">
-                        <label for="topInput">Manufacturer</label>
-                        <input type="text" th:field="*{manufacturer}" class="form-control" id="topInput" placeholder="Enter manufacturer" />
-                    </div>
-                    <div class="form-group">
-                        <label for="bottomInput">Model</label>
-                        <input type="text" th:field="*{model}" class="form-control" id="bottomInput" placeholder="Enter model" />
+                        <input type="hidden" th:field="*{id}"
+                               class="form-control" />
                     </div>
 
                     <div class="form-group">
-                        <label for="yearInput">Year</label>
-                        <input type="text" th:field="*{year}" class="form-control" id="yearInput" placeholder="Enter year" />
+                        <label for="nameInput">Name</label>
+                        <input type="text" th:field="*{name}"
+                               class="form-control" id="nameInput"
+                               placeholder="Enter name" />
                     </div>
 
                     <div class="form-group">
-                        <label for="priceInput">Price</label>
-                        <input type="number" class="form-control" id="priceInput" min="0" step="0.01" name="msrp" value="0.0" placeholder="Enter price" />
+                        <label for="courseIdInput">Course ID</label>
+                        <input type="text" th:field="*{courseId}"
+                               class="form-control" id="courseIdInput"
+                               placeholder="Enter course ID" />
                     </div>
 
                     <div class="form-group">
-                        <label for="categoryInput">Category Type</label>
-                        <select class="form-control" id="categoryInput" th:field="*{type}">
+                        <label for="employeeIdInput">Employee ID</label>
+                        <input type="text" th:field="*{employeeId}"
+                               class="form-control" id="employeeIdInput"
+                               placeholder="Enter employee ID" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="departmentInput">Department</label>
+                        <select class="form-control" id="departmentInput" th:field="*{department}">
                             <option th:each="aCategory : ${categories}" th:value="${aCategory.id}"
-                                    th:text="${aCategory.categorie}"></option>
+                                    th:text="${aCategory.department}"></option>
                         </select>
                     </div>
 
@@ -49,7 +55,8 @@
                         <label for="fileInput">Image</label>
                         <input class="form-control" id="fileInput" type="file" name="file" />
                     </div>
-                    <button type="submit" class="btn btn-warning btn-lg">Submit</button>
+
+                    <button department="submit" class="btn btn-warning btn-lg">Submit</button>
                     <br/><br/>
                 </form>
             </div>
@@ -60,8 +67,8 @@
 
 </div>
 
-
-<!--<footer th:replace="base :: footer"></footer>-->
+<div class="emptySpace"></div>
+<footer th:replace="base :: footer"></footer>
 <div th:replace="base :: scripts"></div>
 </body>
 </html>

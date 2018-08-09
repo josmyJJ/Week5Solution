@@ -15,31 +15,31 @@
             <div class="col-2">&nbsp;</div>
             <div class="col-8">
                 <br/><br/>
-                <h3 class="text-center text-light"> Add a Car category</h3>
+                <h3 class="text-center text-light"> Add a Department</h3>
                 <form method="POST" action="/addCat" th:object="${type}">
 
                     <div class="form-group">
-                        <input type="hidden" th:field="*{id}" class="form-control" />
+                        <input type="hidden" th:field="*{id}"
+                               class="form-control" />
                     </div>
-
                     <div class="form-group">
-                        <label for="categoryInput">Car Category</label>
-
-                        <input type="text" th:field="*{categorie}" class="form-control input-md" id="categoryInput" required=""/>
-                        <span th:if="${#fields.hasErrors('categorie')}" th:errors="*{categorie}"></span><br/>
+                        <label for="departmentInput">Department</label>
+                        <input type="text" th:field="*{department}"
+                               class="form-control input-md" id="departmentInput" required=""/>
+                        <!--<span th:if="${#fields.hasErrors('department')}" th:errors="*{department}"></span><br/>-->
 
                     </div>
 
-                    <button type="submit" class="btn btn-warning btn-lg">Submit</button>
+                    <button department="submit" class="btn btn-warning btn-lg">Submit</button>
                     <br/><br/>
                 </form>
-
 
             </div>
         </div>
     </div>
 </div>
-<!--<footer th:replace="base :: footer"></footer>-->
+<div class="emptySpace"></div>
+<footer th:replace="base :: footer"></footer>
 <div th:replace="base :: scripts"></div>
 </body>
 </html>
